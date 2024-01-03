@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <script src="arrob.js"></script>
+    <style>
+        li {
+            list-style-type: none;
+            padding: 10px;
+        }
+
+        #d1 li {
+            width: 30%;
+        }
+
+        .head {
+            color: rgb(42, 42, 246);
+
+        }
+
+        #i1 {
+            width: 23%;
+        }
+
+        #i2 {
+            width: 32%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Gennav() {
+            return (
+                <div>
+                    <div className="d-flex flex-wrap justify-content-between position-sticky top-0 container p-2 mb-3 bg-light">
+                        <div>
+                            <img src="https://edupoly.in/common/assets/edupoly-logo-light.png" alt="" width="120px" className="pt-2" />
+                        </div>
+                        <div>
+                            <ul className="d-flex flex-wrap m-0" >
+                                <li>cources</li>
+                                <li>tutorials</li>
+                                <li>training</li>
+                                <li>contacts</li>
+                                <li><i class="bi bi-bookmark-star-fill"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <Genimg />
+                    <Genclasses />
+                    <Gencources />
+                    <Gentrend />
+                    <Feedback />
+                    <Touch />
+                </div>
+            )
+        }
+        function Genimg() {
+            return (
+                <div>
+                    <img src="edimg.png" alt="" width="100%" />
+                </div>
+            )
+        }
+        function Genclasses() {
+            return (
+                <div id="d1" className="d-flex flex-wrap justify-content-between container">
+                    <li >
+                        <h2 className="head">Why choose our classes</h2>
+                        <p>We provide an end-to-end guidance to all topics necessary for current industry level standards. We focus on foundational topics so that students have a strong knowledge on basics.</p>
+                    </li>
+                    {
+                        matt.map((a) => {
+                            return (
+                                <li className='shadow mb-4 rounded rounded-5 bg-light'>
+                                    <h1 className={a.icon}></h1>
+                                    <h3 className="head">{a.head}</h3>
+                                    <p>{a.details}</p>
+
+                                </li>
+                            )
+                        })
+                    }
+                </div>
+            )
+        }
+        function Gencources() {
+            return (
+                <div>
+                    <div align="center">
+                        <h1 className="head">Top Courses for IT</h1>
+                        <p>Information Technology Courses to expand your skills and boost your career & salary</p>
+                    </div>
+                    <div className="container d-flex flex-wrap justify-content-between">
+                        {
+                            courseImg.map((b) => {
+                                return (
+                                    <img src={b.img} alt="" id='i1' className="'shadow mb-3 rounded " />
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            )
+        }
+        function Gentrend() {
+            return (
+                <div className="mb-5">
+                    <div className="container">
+                        <h1 className="head">Trending Courses</h1>
+                        <p>Find courses that are best for your profession</p>
+                    </div>
+                    <div className="container d-flex flex-wrap justify-content-between">
+                        {
+                            topCourse.map((c) => {
+                                return (
+                                    <li id="i2" className="shadow">
+                                        <img src={c.img} alt="" />
+                                        <div className="d-flex flex-wrap justify-content-between">
+                                            <span>{c.level}</span>
+                                            <span>{c.months}</span>
+                                        </div>
+                                        <div>
+                                            <h4>{c.title}</h4>
+                                            <p>{c.description}</p>
+                                        </div>
+                                        <div className="d-flex flex-wrap justify-content-between">
+                                            <h3>₹{c.price}</h3>
+                                            <span><i class="bi bi-clock-fill"></i> {c.duration}</span>
+                                        </div>
+
+                                    </li>
+
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            )
+        }
+        function Feedback() {
+            return (
+                <div align='center'className="mb-5">
+                    <div align="center">
+                        <h3 className="head">Our Student Feedback</h3>
+                        <p>Read what our past students speak about us</p>
+                    </div>
+                    <div className='text-center w-50'>
+                        <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+                            <div className="carousel-inner">
+                                {feedbackArr.map((a, b) => {
+                                    if (b === 0) {
+                                        return (
+                                            <div className="carousel-item active card" data-bs-interval='2000'>
+                                                <h1 className={a.icon}></h1>
+                                                <h5>{a.name}</h5>
+                                                <p>{a.feedback}</p>
+                                            </div>
+                                        )
+                                    }
+                                    else {
+                                        return (
+                                            <div className="carousel-item card" data-bs-interval='2000'>
+                                                <h1 className={a.icon}></h1>
+                                                <h5>{a.name}</h5>
+                                                <p>{a.feedback}</p>
+                                            </div>
+                                        )
+                                    }
+                                })}
+                            </div>
+                            <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span className="carousel-control-prev-icon bg-success" aria-hidden="true"></span>
+                                <span className="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span className="carousel-control-next-icon bg-success" aria-hidden="true"></span>
+                                <span className="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+        function Touch() {
+            return (
+                <div className="container mb-5">
+                    <div>
+                        <h3 className="head">Get in touch with us</h3>
+                        <p>Claim your free 10-minute phone call to see if we are right for your kid.</p>
+                    </div>
+                    <div className=" d-flex flex-wrap justify-content-between mt-5">
+                        {
+                            contactUs.map((d) => {
+                                return (
+                                    <li id="i2" className="shadow position-relative mb-5">
+                                        <div>
+                                            <h5 className="head">{d.conct}</h5>
+                                            <p>{d.info}</p>
+                                        </div>
+                                        <div className="position-absolute" style={{top:"-30px",right:"15px"}}>
+                                            <img src={d.con} alt="" width='50px'/>
+                                        </div>
+                                    </li>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            )
+        }
+        ReactDOM.render(<Gennav />, document.getElementById("root"))
+    </script>
+</body>
+
+</html>
